@@ -114,7 +114,7 @@ export default {
     },
     handleEdit(id) {
       api.getById(id).then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.code === 20000) {
           // 将查询到的数据插入子组件
           this.edit.formData = res.data
@@ -124,7 +124,28 @@ export default {
       })
     },
     handleDelete(id) {
-      // console.log('删除',id)
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          api.deleteById(id).then(res => {
+            if (res.code === 20000) {
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              })
+            } else {
+              this.$message({
+                type: 'error',
+                message: '删除失败'
+              })
+            }
+            this.fetchData() // 刷新列表数据
+          })
+        }).catch(() => {
+          // 取消删除不用理会 
+        })
     },
     // 每页展示的数据条数发生改变触发此方法，传入的参数为每页展示的数据条数
     handleSizeChange(val) {

@@ -30,12 +30,19 @@ export default {
       // data: json
     })
   },
-  // 跟新数据
+  // 更新数据
   update(data) {
     return service({
       url: `/article/category`,
       method: 'put',
       data
+    })
+  },
+  // 删除数据
+  deleteById(id) {
+    return service({
+      url: `/article/category/${id}`,
+      method: 'delete'
     })
   }
 }

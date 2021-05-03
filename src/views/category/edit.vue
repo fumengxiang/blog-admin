@@ -73,7 +73,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // alert('submit')
+          // 校验通过，提交数据
           this.submitData()
         } else {
           console.log('error submit')
@@ -82,7 +82,13 @@ export default {
       })
     },
     async submitData() {
-      let response = await api.add(this.formData)
+      let response = null
+      // 此组件是编辑与新增复用的，用ID判断是否是编辑
+      if (this.formData.id) {
+        response = await api.update(this.formData)
+      } else {
+        response = await api.add(this.formData)
+      }
       // console.log(response)
       if (response.code === 20000) {
         // element-ui中的消息提示
