@@ -1,10 +1,14 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <!-- 侧边栏 -->
     <sidebar class="sidebar-container" />
-    <div class="main-container">
-      <div :class="{'fixed-header':fixedHeader}">
+    <!-- 添加hasTagsView, 给标签导航添加样式 -->
+    <div class="hasTagsView main-container">
+      <!-- 是否固定导航的设置 -->
+      <div :class="{'fixed-header':fixedHeader}"> 
         <navbar />
+        <tags-view />
       </div>
       <app-main />
     </div>
@@ -12,7 +16,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, Sidebar, AppMain, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -20,7 +24,8 @@ export default {
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {

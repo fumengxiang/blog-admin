@@ -1,18 +1,32 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <div class="dashboard-text">name:{{ name }}, age:{{ age }} </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import api from '@/api/test'
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  data() {
+    return {
+      name: '',
+      age: 0
+    }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    // 定义拉取数据的函数
+    fetchData() {
+      api.test().then(res => {
+        // console.log(res)
+        this.name = res.data.name
+        this.age = res.data.age
+      })
+    }
   }
 }
 </script>

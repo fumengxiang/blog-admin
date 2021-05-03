@@ -1,12 +1,12 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: '付孟祥', // 浏览器中的标题设置
 
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
    */
-  fixedHeader: false,
+  fixedHeader: false, // 设置导航固定
 
   /**
    * @type {boolean} true | false

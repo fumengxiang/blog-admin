@@ -1,4 +1,5 @@
 <template>
+  <!-- showLogo设置是否展示logo以及标题 -->
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">

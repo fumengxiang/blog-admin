@@ -1,11 +1,11 @@
 const Mock = require('mockjs')
 
 const data = Mock.mock({
-  'items|30': [{
+  'items|30': [{ // 数组中有30个表格对象
     id: '@id',
-    title: '@sentence(10, 20)',
+    title: '@sentence(10, 20)', // 生成单词
     'status|1': ['published', 'draft', 'deleted'],
-    author: 'name',
+    author: '@name',
     display_time: '@datetime',
     pageviews: '@integer(300, 5000)'
   }]
