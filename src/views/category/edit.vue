@@ -5,7 +5,7 @@
         <el-form-item label="分类名称" size="small" prop="name">
           <el-input v-model="formData.name"></el-input>
         </el-form-item>
-        <el-form-item label="状态" prop="status">
+        <el-form-item label="状态" prop="status" size="small">
           <!-- 在element-ui中，此标签的label即为此单选框的值 -->
           <el-radio-group v-model="formData.status">
             <el-radio :label="0">禁止</el-radio>

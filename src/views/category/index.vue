@@ -188,6 +188,6 @@ export default {
 <style scoped>
 .el-pagination {
   float: right;
-  margin-right: 50px;
+  margin:10px 50px;
 }
 </style>

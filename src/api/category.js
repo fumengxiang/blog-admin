@@ -44,5 +44,12 @@ export default {
       url: `/article/category/${id}`,
       method: 'delete'
     })
+  },
+  // 在标签页查询分类数据
+  getNormalList() {
+    return service({
+      url: '/article/category/list',
+      method: 'get'
+    })
   }
 }
