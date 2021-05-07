@@ -4,11 +4,11 @@
     <!-- 条件查询 -->
     <!-- model双向绑定表单存储的数据 -->
     <el-form :inline="true" :model="query" size="mini">
-      <el-form-item label="分类名称：">
+      <el-form-item label="分类名称:">
         <!-- trim可以去除字符串中的空格 -->
         <el-input v-model.trim="query.name"></el-input>
       </el-form-item>
-      <el-form-item label="状态：">
+      <el-form-item label="状态:">
         <el-select v-model="query.status" clearable filterable>
           <el-option v-for="statu in statusOptions" :label="statu.status" :value="statu.code" :key="statu.code"></el-option>
         </el-select>

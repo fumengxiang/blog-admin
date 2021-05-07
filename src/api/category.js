@@ -51,5 +51,12 @@ export default {
       url: '/article/category/list',
       method: 'get'
     })
+  },
+  // 获取所有正常状态下的分类和标签
+  getCategoryAndLabel() {
+    return service({
+      url: '/article/category/label/list',
+      method: 'get'
+    })
   }
 }
