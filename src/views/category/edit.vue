@@ -60,7 +60,7 @@ export default {
     remoteClose: Function, // 父组件传递的函数
     formData: { // 表单数据
       type: Object,
-      default: {}
+      default: ()=>{}
     }
   },
   methods: {

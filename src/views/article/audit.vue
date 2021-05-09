@@ -79,6 +79,7 @@ export default {
   },
   methods: {
     handleClose() {
+      this.$refs['formData'].resetFields()
       this.remoteClose()
     },
     // 审核通过

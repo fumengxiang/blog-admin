@@ -90,7 +90,7 @@ export default {
     remoteClose: Function, // 父组件传递的函数
     formData: { // 表单数据
       type: Object,
-      default: {}
+      default: () => {}
     },
     oldImageUrl: String // 编辑时，查询出来的那张图片地址
   },
@@ -149,7 +149,7 @@ export default {
       })
     },
     deleteImg() {
-      // && 后面的内容是为了防止在没有建立关联的情况下上传图片，删除的是新上传的图片
+      // && 后面的内容是为了防止在没有建立关联的情况下上传图片，删除的是新上传的图片, 不删除旧的图片
       if (this.formData.imageUrl && this.formData.imageUrl !== this.oleImageUrl) {
         commonApi.deleteImg(this.formData.imageUrl)
       }
