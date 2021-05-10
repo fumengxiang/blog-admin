@@ -5,7 +5,7 @@
     <el-form :inline="true" :model="query" size="mini">
       <el-form-item label="菜单名称:">
         <!-- trim可以去除字符串中的空格 -->
-        <el-input v-model.trim="query.name"></el-input>
+        <el-input v-model.trim="query.name" />
       </el-form-item>
       <el-form-item>
         <el-button icon="el-icon-search" type="primary" @click="fetchData">查询</el-button>
@@ -17,10 +17,10 @@
     <el-table row-key="id" :data="list" border stripe style="width: 100%">
       <!-- 表格的每一列 -->
       <!-- 设置表格的第一列为序号，数据是element-ui自己产生 -->
-      <el-table-column align="center" type="index" label="序号" width="80px"></el-table-column>
-      <el-table-column align="center" prop="name" label="名称" width="120px"></el-table-column>
-      <el-table-column align="center" prop="url" label="请求地址"></el-table-column>
-      <el-table-column align="center" prop="code" label="权限标识"></el-table-column>
+      <el-table-column align="center" type="index" label="序号" width="80px" />
+      <el-table-column align="center" prop="name" label="名称" width="120px" />
+      <el-table-column align="center" prop="url" label="请求地址" />
+      <el-table-column align="center" prop="code" label="权限标识" />
       <el-table-column align="center" prop="type" label="类型" width="100px">
         <template slot-scope="scope">
           <span v-if="scope.row.type === 1">目录</span>
@@ -30,10 +30,10 @@
       </el-table-column>
       <el-table-column align="center" prop="icon" label="图标" width="100px">
         <template slot-scope="scope">
-          <i :class="scope.row.icon"></i>
+          <i :class="scope.row.icon" />
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="sort" label="排序" width="100px"></el-table-column>
+      <el-table-column align="center" prop="sort" label="排序" width="100px" />
       <el-table-column align="center" label="操作">
         <!-- element-ui中的slot-scope属性获取当前的单元格（即此表格渲染的绑定数据的那一项对象） -->
         <template slot-scope="scope">
@@ -44,7 +44,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <edit :title="edit.title" :visible="edit.visible" :formData="edit.formData" :remoteClose="remoteClose"></edit>
+    <edit :title="edit.title" :visible="edit.visible" :formData="edit.formData" :remoteClose="remoteClose" />
   </div>
 </template>
 
