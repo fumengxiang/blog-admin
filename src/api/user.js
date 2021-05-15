@@ -79,3 +79,12 @@ export function saveUserRole(id, roleIds) {
     data: roleIds
   })
 }
+
+// 修改密码按钮
+export function changePassword(data) {
+  return request({
+    url: `/system/user/password`,
+    method: 'put',
+    data
+  })
+}

@@ -77,6 +77,7 @@
       <!-- roleIds是当前用户所拥有的角色id, saveUserRole事件是子组件进行触发提交选择的角色id -->
       <role :roleIds="role.roleIds" @saveUserRole="saveUserRole" />
     </el-dialog>
+    <password title="修改密码" :remoteClose="remoteClosePassord" :visible="password.visible" :userId="password.userId" />
   </div>
 </template>
 
@@ -85,6 +86,7 @@ import { getList, getById, deleteById, getRoleIdsByUserId, saveUserRole } from '
 
 import Edit from './edit'
 import Role from '../role/index'
+import Password from './password.vue'
 export default {
   name: 'User',
   data () {
@@ -105,12 +107,17 @@ export default {
         visible: false,
         roleIds: [], // 当前用户所拥有的角色id，至少会传递一个数组，哪怕是空数组，以此来区别是否是用户管理中的组件或者是角色管理中的组件
         userId: null
+      },
+      password: {
+        visible: false,
+        userId: null
       }
     }
   },
   components: {
     Edit,
-    Role
+    Role,
+    Password
   },
   created() {
     this.fetchData()
@@ -174,7 +181,8 @@ export default {
     },
     // 密码修改
     handlePwd(id) {
-
+      this.password.userId = id
+      this.password.visible = true
     },
     remoteClose() {
       this.edit.visible = false,
@@ -182,7 +190,7 @@ export default {
       this.fetchData()
     },
     // 角色列表子组件会触发此方法来保存当前用户选择的角色
-    async saveUserRole(checkedRoleIds) {
+    async saveUserRole(checkedRoleIds) { // 传入的参数为子组件传入的参数
       const { code } = await saveUserRole(this.role.userId, checkedRoleIds)
       if (code === 20000) {
         this.$message.success('分配角色成功')
@@ -190,6 +198,11 @@ export default {
       } else {
         this.$message.success('分配角色失败')
       }
+    },
+    remoteClosePassord() {
+      this.password.userId = null
+      this.password.visible = false
+      this.fetchData()
     }
   },
 }
