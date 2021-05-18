@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "..\\..\\..\\..\\..\\mengxuegu-blog-admin"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\mengxuegu-auth-center\\mengxuegu-auth-center"
 		}
 	]
 }

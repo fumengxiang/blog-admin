@@ -2,7 +2,7 @@
   <div class="app-container">
     <!-- 条件查询 -->
     <!-- model双向绑定表单存储的数据 -->
-    <el-form :inline="true" :model="query" size="mini">
+    <el-form v-permission="'article:search'" :inline="true" :model="query" size="mini">
       <el-form-item label="文章标题:">
         <!-- trim可以去除字符串中的空格 -->
         <el-input v-model.trim="query.title"></el-input>
@@ -50,8 +50,8 @@
         <template slot-scope="scope">
           <!-- 点击按钮获取点击行的id, 以便发送给后台获取数据 -->
           <el-button type="primary" size="small" @click="openView(scope.row.id)">查看</el-button>
-          <el-button type="success" size="small" v-if="scope.row.status === 1" @click="openAudit(scope.row.id)">审核</el-button>
-          <el-button type="danger" size="small" v-if="scope.row.status !== 0" @click="handleDelete(scope.row.id)">删除</el-button>
+          <el-button v-permission='"article:audit"' type="success" size="small" v-if="scope.row.status === 1" @click="openAudit(scope.row.id)">审核</el-button>
+          <el-button v-permission='"article:delete"' type="danger" size="small" v-if="scope.row.status !== 0" @click="handleDelete(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

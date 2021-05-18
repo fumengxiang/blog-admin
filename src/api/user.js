@@ -88,3 +88,11 @@ export function changePassword(data) {
     data
   })
 }
+
+// 查询当前登录用户拥有的的菜单按钮权限
+export function getUserMenuButtonList(userId) {
+  return request({
+    url: `/system/menu/user/${userId}`,
+    method: 'get'
+  })
+}
